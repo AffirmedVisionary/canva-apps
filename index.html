@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVC Word Adventure - Affirmed Visionary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Fredoka', sans-serif;
+        }
+        
+        .bounce-in {
+            animation: bounceIn 0.6s ease-out;
+        }
+        
+        .pulse-grow {
+            animation: pulseGrow 0.3s ease-out;
+        }
+        
+        .celebration {
+            animation: celebration 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes pulseGrow {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes celebration {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-5deg) scale(1.1); }
+            75% { transform: rotate(5deg) scale(1.1); }
+        }
+        
+        .word-card {
+            transition: all 0.3s ease;
+        }
+        
+        .word-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .screen {
+            display: none;
+        }
+        
+        .screen.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="min-h-screen gradient-bg">
+    <!-- Landing Page -->
+    <div id="landing" class="screen active">
+        <div class="min-h-screen flex flex-col items-center justify-center p-6">
+            <div class="text-center max-w-2xl mx-auto bounce-in">
+                <!-- Logo -->
+                <div class="mb-8">
+                    <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4">
+                        <span class="text-3xl font-bold text-purple-600">AV</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Affirmed Visionary</h1>
+                </div>
+                
+                <!-- Welcome Message -->
+                <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+                        Welcome to your CVC Word Adventure! 🌟
+                    </h2>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Let's build your first reading milestone together with fun, interactive learning!
+                    </p>
+                </div>
+                
+                <!-- Start Button -->
+                <button onclick="showScreen('wordGroups')" 
+                        class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold text-xl px-12 py-4 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+                    Start Now! 🚀
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tool Screen 1: Choose Word Group -->
+    <div id="wordGroups" class="screen">
+        <div class="min-h-screen p-6">
+            <div class="max-w-4xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Pick a word group to start learning! 📚</h2>
+                </div>
+                
+                <!-- Word Group Buttons -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <button onclick="selectWordGroup('shortA')" 
+                            class="bg-red-400 hover:bg-red-500 text-white font-bold p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <div class="text-2xl mb-2">🐱</div>
+                        <div class="text-xl mb-2">Short A Words</div>
+                        <div class="text-sm opacity-90">cat, man, bag</div>
+                    </button>
+                    
+                    <button onclick="selectWordGroup('shortE')" 
+                            class="bg-green-400 hover:bg-green-500 text-white font-bold p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <div class="text-2xl mb-2">🛏️</div>
+                        <div class="text-xl mb-2">Short E Words</div>
+                        <div class="text-sm opacity-90">bed, jet, pen</div>
+                    </button>
+                    
+                    <button onclick="selectWordGroup('shortI')" 
+                            class="bg-blue-400 hover:bg-blue-500 text-white font-bold p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <div class="text-2xl mb-2">🐷</div>
+                        <div class="text-xl mb-2">Short I Words</div>
+                        <div class="text-sm opacity-90">pig, bin, lip</div>
+                    </button>
+                    
+                    <button onclick="selectWordGroup('shortO')" 
+                            class="bg-orange-400 hover:bg-orange-500 text-white font-bold p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <div class="text-2xl mb-2">🐕</div>
+                        <div class="text-xl mb-2">Short O Words</div>
+                        <div class="text-sm opacity-90">dog, mop, pot</div>
+                    </button>
+                    
+                    <button onclick="selectWordGroup('shortU')" 
+                            class="bg-purple-400 hover:bg-purple-500 text-white font-bold p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <div class="text-2xl mb-2">🐛</div>
+                        <div class="text-xl mb-2">Short U Words</div>
+                        <div class="text-sm opacity-90">bug, fun, pup</div>
+                    </button>
+                </div>
+                
+                <!-- Selected Words Display -->
+                <div id="selectedWords" class="hidden">
+                    <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Your Selected Words:</h3>
+                        <div id="wordsList" class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
+                            <!-- Words will be populated here -->
+                        </div>
+                        <div class="text-center">
+                            <button onclick="showScreen('learnPlay')" 
+                                    class="bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+                                Next → Let's Learn! 🎯
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tool Screen 2: Learn and Play -->
+    <div id="learnPlay" class="screen">
+        <div class="min-h-screen p-6">
+            <div class="max-w-4xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Let's learn these words! 🎓</h2>
+                </div>
+                
+                <!-- Word Cards -->
+                <div id="wordCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <!-- Word cards will be populated here -->
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="shuffleWords()" 
+                            class="bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+                        🔄 Shuffle Words
+                    </button>
+                    
+                    <button onclick="showScreen('wordGroups')" 
+                            class="bg-purple-500 hover:bg-purple-600 text-white font-bold px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+                        📚 Pick New Group
+                    </button>
+                    
+                    <button onclick="showScreen('celebration')" 
+                            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+                        🎉 Celebrate & Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Celebration Screen -->
+    <div id="celebration" class="screen">
+        <div class="min-h-screen flex flex-col items-center justify-center p-6">
+            <div class="text-center max-w-2xl mx-auto">
+                <!-- Celebration Animation -->
+                <div class="celebration text-8xl mb-6">🌟</div>
+                
+                <!-- Congratulations Message -->
+                <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                        🎉 Well done! 🎉
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-4">
+                        You've completed your word group!
+                    </p>
+                    <div class="text-6xl mb-4">⭐</div>
+                    <p class="text-lg text-gray-600">
+                        You're becoming a reading superstar!
+                    </p>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <button onclick="downloadBadge()" 
+                            class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+                        📄 Download Badge
+                    </button>
+                    
+                    <button onclick="showScreen('wordGroups')" 
+                            class="bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+                        🔄 Go Again!
+                    </button>
+                    
+                    <a href="https://affirmedvisionary.store" target="_blank"
+                       class="bg-purple-500 hover:bg-purple-600 text-white font-bold px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 inline-block">
+                        🛍️ Visit Store
+                    </a>
+                </div>
+                
+                <!-- Footer Message -->
+                <div class="text-white text-center">
+                    <p class="mb-2">Thanks for using this tool from Affirmed Visionary!</p>
+                    <p>👉 <a href="https://affirmedvisionary.store" class="underline hover:text-yellow-300">affirmedvisionary.store</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="screen">
+        <div class="min-h-screen p-6">
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">About Affirmed Visionary</h2>
+                    
+                    <div class="text-lg text-gray-700 space-y-4 mb-8">
+                        <p>
+                            <strong>Our Mission:</strong> Affirmed Visionary creates sensory-friendly tools to empower neurodivergent young minds through joyful learning.
+                        </p>
+                        
+                        <p>
+                            <strong>Why We Do This:</strong> Designed by a parent, tested with love. We believe every child deserves learning tools that celebrate their unique way of thinking and processing the world.
+                        </p>
+                        
+                        <p>
+                            Our CVC Word Adventure is crafted to provide a safe, engaging, and effective learning environment that adapts to different learning styles and sensory needs.
+                        </p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button onclick="showScreen('landing')" 
+                                class="bg-purple-500 hover:bg-purple-600 text-white font-bold px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 mr-4">
+                            🏠 Back to Home
+                        </button>
+                        
+                        <a href="https://affirmedvisionary.store" target="_blank"
+                           class="bg-yellow-500 hover:bg-yellow-600 text-gray-800 font-bold px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 inline-block">
+                            🛍️ Visit Our Store
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Word data
+        const wordGroups = {
+            shortA: ['cat', 'bat', 'hat', 'mat', 'rat', 'sat', 'fat', 'pat', 'man', 'can', 'fan', 'pan', 'ran', 'tan', 'van', 'bag', 'tag', 'rag', 'wag', 'sag'],
+            shortE: ['bed', 'red', 'led', 'fed', 'wed', 'jet', 'net', 'pet', 'wet', 'set', 'get', 'let', 'met', 'pen', 'ten', 'hen', 'men', 'den', 'leg', 'peg'],
+            shortI: ['pig', 'big', 'dig', 'fig', 'wig', 'bin', 'fin', 'pin', 'win', 'tin', 'din', 'lip', 'tip', 'hip', 'dip', 'rip', 'sip', 'zip', 'bit', 'hit'],
+            shortO: ['dog', 'log', 'fog', 'hog', 'jog', 'mop', 'top', 'hop', 'pop', 'cop', 'pot', 'hot', 'lot', 'got', 'not', 'dot', 'cot', 'rot', 'box', 'fox'],
+            shortU: ['bug', 'hug', 'mug', 'rug', 'tug', 'jug', 'fun', 'run', 'sun', 'gun', 'bun', 'nun', 'pup', 'cup', 'cut', 'hut', 'nut', 'but', 'bus', 'gum']
+        };
+        
+        let currentGroup = '';
+        let currentWords = [];
+        
+        // Screen navigation
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            document.getElementById(screenId).classList.add('active');
+        }
+        
+        // Select word group and show 5 random words
+        function selectWordGroup(group) {
+            currentGroup = group;
+            currentWords = getRandomWords(wordGroups[group], 5);
+            
+            // Show selected words
+            const selectedWordsDiv = document.getElementById('selectedWords');
+            const wordsListDiv = document.getElementById('wordsList');
+            
+            wordsListDiv.innerHTML = '';
+            currentWords.forEach(word => {
+                const wordButton = document.createElement('button');
+                wordButton.className = 'bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300';
+                wordButton.innerHTML = `
+                    <div class="text-lg">${word}</div>
+                    <div class="text-xs mt-1">🔊 Click to hear</div>
+                `;
+                wordButton.onclick = () => speakWord(word);
+                wordsListDiv.appendChild(wordButton);
+            });
+            
+            selectedWordsDiv.classList.remove('hidden');
+        }
+        
+        // Get random words from array
+        function getRandomWords(wordArray, count) {
+            const shuffled = [...wordArray].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+        
+        // Populate learn and play screen
+        function populateLearnPlay() {
+            const wordCardsDiv = document.getElementById('wordCards');
+            wordCardsDiv.innerHTML = '';
+            
+            const colors = ['bg-red-400', 'bg-green-400', 'bg-blue-400', 'bg-yellow-400', 'bg-purple-400'];
+            
+            currentWords.forEach((word, index) => {
+                const wordCard = document.createElement('div');
+                wordCard.className = `word-card ${colors[index % colors.length]} hover:${colors[index % colors.length].replace('400', '500')} text-white font-bold p-8 rounded-2xl shadow-lg cursor-pointer text-center transform transition-all duration-300`;
+                wordCard.innerHTML = `
+                    <div class="text-4xl mb-4">${getWordEmoji(word)}</div>
+                    <div class="text-3xl font-bold mb-2">${word}</div>
+                    <div class="text-sm opacity-90">Click to hear! 🔊</div>
+                `;
+                wordCard.onclick = () => {
+                    wordCard.classList.add('pulse-grow');
+                    setTimeout(() => wordCard.classList.remove('pulse-grow'), 300);
+                    speakWord(word);
+                };
+                wordCardsDiv.appendChild(wordCard);
+            });
+        }
+        
+        // Get emoji for word (simple mapping)
+        function getWordEmoji(word) {
+            const emojiMap = {
+                cat: '🐱', bat: '🦇', hat: '👒', man: '👨', can: '🥫', bag: '👜',
+                bed: '🛏️', red: '🔴', jet: '✈️', net: '🥅', pen: '✏️', leg: '🦵',
+                pig: '🐷', big: '📏', bin: '🗑️', lip: '👄', tip: '💡', bit: '🍪',
+                dog: '🐕', log: '🪵', mop: '🧽', pot: '🍯', box: '📦', fox: '🦊',
+                bug: '🐛', hug: '🤗', fun: '🎉', sun: '☀️', pup: '🐶', cup: '☕'
+            };
+            return emojiMap[word] || '📝';
+        }
+        
+        // Text-to-speech function
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.rate = 0.8;
+                utterance.pitch = 1.2;
+                speechSynthesis.speak(utterance);
+            }
+        }
+        
+        // Shuffle words
+        function shuffleWords() {
+            if (currentGroup) {
+                currentWords = getRandomWords(wordGroups[currentGroup], 5);
+                populateLearnPlay();
+            }
+        }
+        
+        // Download badge function
+        function downloadBadge() {
+            // Create a simple certificate
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 800;
+            canvas.height = 600;
+            
+            // Background
+            ctx.fillStyle = '#667eea';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            // Certificate content
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 48px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('🌟 Reading Achievement 🌟', 400, 150);
+            
+            ctx.font = '32px Arial';
+            ctx.fillText('Congratulations!', 400, 250);
+            
+            ctx.font = '24px Arial';
+            ctx.fillText(`You completed ${currentGroup.toUpperCase()} words!`, 400, 320);
+            ctx.fillText('Keep up the great work!', 400, 380);
+            
+            ctx.font = '18px Arial';
+            ctx.fillText('Affirmed Visionary - CVC Word Adventure', 400, 500);
+            
+            // Download
+            const link = document.createElement('a');
+            link.download = 'reading-achievement-badge.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // Initialize learn and play screen when shown
+        document.addEventListener('DOMContentLoaded', function() {
+            // Override showScreen to populate learn/play when accessed
+            const originalShowScreen = showScreen;
+            showScreen = function(screenId) {
+                originalShowScreen(screenId);
+                if (screenId === 'learnPlay') {
+                    populateLearnPlay();
+                }
+            };
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9603815110c9d4c2',t:'MTc1MjY4OTkzOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
